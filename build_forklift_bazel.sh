@@ -63,7 +63,9 @@ if [ "${PROVIDER_NAME}" = "ovirt" ]; then
 fi
 
 if [ "${PROVIDER_NAME}" = "openstack" ]; then
-    ACTION_ENV="$ACTION_ENV --action_env OPENSTACK_POPULATOR_IMAGE=${REGISTRY}/openstack-populator:${REGISTRY_TAG}"
+    ACTION_ENV="$ACTION_ENV \
+        --action_env VIRT_V2V_IMAGE=quay.io/bzlotnik/forklift-virt-v2v:latest \
+        --action_env OPENSTACK_POPULATOR_IMAGE=${REGISTRY}/openstack-populator:${REGISTRY_TAG}"
 fi
 
 if [ "${PROVIDER_NAME}" = "vsphere" ]; then
